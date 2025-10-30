@@ -29,6 +29,18 @@
     gcc \
     gcc-c++
 
+    sudo dnf install -y keyutils-libs-devel libmount-devel libnl3-devel
+
+ ## Without a RH subscription, libyaml needs to be built manually
+ curl -LO https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+ tar xzf yaml-0.2.5.tar.gz
+cd yaml-0.2.5
+./configure --prefix=/usr
+make -j$(nproc)
+sudo make install
+
+
+
   sudo dnf install kernel
   sudo reboot
 ```
